@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "pid": 101,
+      "pname": "mobile",
+      "price": 20000
+    },
+    {
+      "pid": 102,
+      "pname": "laptop",
+      "price": 60000
+    },
+    {
+      "pid": 103,
+      "pname": "iphone",
+      "price": 50000
+    },
+    {
+      "pid": 104,
+      "pname": "charger",
+      "price": 200
+    },
+    {
+      "pid": 105,
+      "pname": "pendrive",
+      "price": 230
+    },
+    {
+      "pid": 106,
+      "pname": "cd disc",
+      "price": 20
+    },
+    {
+      "pid": 107,
+      "pname": "tablet",
+      "price": 30000
+    }
+  ]
+}

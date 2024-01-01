@@ -1,0 +1,120 @@
+<p>User Register</p>
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container col-left-md-4" >
+    <form   #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"  >
+        <div class="form-group">
+            <label for="firstname">Enter the First name:</label>
+            <input type="text" class="form-control" id="firstname"  name="firstname" placeholder="Enter a first name"  ngModel #firstname="ngModel" required minlength="5"> <br>
+            <div *ngIf="firstname.errors && (firstname.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="firstname.errors['required']" >firstname cannot be empty></small>
+                <small class="text-danger" *ngIf="firstname.errors['minlength']" >name should have minimun 5 letters></small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Enter the Last name:</label>
+            <input type="text" class="form-control" id="lastname"  name="lastname" placeholder="Enter a last name" ngModel #lastname="ngModel" required > <br>
+            <div *ngIf="lastname.errors && (lastname.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="lastname.errors['required']" >lastname cannot be empty></small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter a valid password" ngModel   #password="ngModel" required> <br>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="pwdcheck"   name="status"  ngModel  >
+                <label class="form-check-label" for="pwdcheck">Remember me</label>
+            </div>
+            <div *ngIf="password.errors && (password.touched||userForm.submitted)">
+               <span class="text-danger"  ngIf="password.errors['required']" >Password is mandartory</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter a your email" ngModel  #email="ngModel" required>  <br>
+            <small>Provide a user email id</small>
+            <div *ngIf="email.errors && (email.touched||userForm.submitted)">
+                <span class="text-danger"  ngIf="email.errors['required']" >email is cannot be empty</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label><br>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile no" ngModel #mobile="ngModel" required> <br>
+            <small>Provide a valid contact number</small>
+            <div *ngIf="mobile.errors && (mobile.touched||userForm.submitted)">
+                <span class="text-danger"  ngIf="mobile.errors['required']" >mobile number is cannot be empty</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  for="usertype">Enter the User type:</label><br>
+            <select id="usertype" name="usertype" ngModel #usertype="ngModel" required>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="employertype">Select Employer type:</label><br>
+            <select id="employertype" name="employertype" ngModel  #employertype="ngModel" required>
+                <option value="salaried">Salaried</option>
+                <option value="business">Business</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="employername">Select Employer name:</label><br>
+            <select id="employername" name="employername" ngModel #employername="ngModel" required>
+                <option value="salaried">Salaried</option>
+                <option value="business">Business</option>
+                <option value="other">Other</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="usercategory">Select User category:</label><br>
+            <select id="usercategory" name="usercategory" ngModel  #usercategory="ngModel" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Date of birth:</label><br>
+            <input type="date" id="dob" name="dob" ngModel #dob="ngModel" required> 
+            <div *ngIf="dob.errors && (dob.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="dob.errors['required']" >dateofbirth cannot be empty></small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="panNumber">PAN number:</label><br>
+            <input type="text" id="panno" name="panno" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ngModel>
+               <small>Format: AAAAA9999A </small>
+        </div>
+        <div class="form-group">
+            <h5>Address:</h5>
+            <label for="addressline" >Enter the Addressline:</label>
+            <input type="text" class="form-control" id="addressline"  name="addressline" placeholder="Enter a your Addressline" ngModel #addressline="ngModel" required> <br>
+            <div  *ngIf="addressline.errors && (addressline.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="addressline.errors['required']" >address cannot be empty></small>
+            </div>
+            <label for="City" >Enter the City:</label>
+            <input type="text" class="form-control" id="city"  name="city" placeholder="Enter a City" ngModel #city="ngModel" required> <br>
+            <div *ngIf="city.errors && (city.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="city.errors['required']" >city cannot be empty></small>
+            </div>
+            <label for="State" >Enter the State:</label>
+            <input type="text" class="form-control" id="state"  name="state" placeholder="Enter a State" ngModel #state="ngModel" required> <br>
+            <div *ngIf="state.errors && (state.touched||userForm.submitted)">
+                <small class="text-danger" *ngIf="state.errors['required']" >state cannot be empty></small>
+            </div>
+            <label for="Pincode" >Enter the Pincode:</label>
+            <input type="text" class="form-control" id="pincode"  name="pincode" pattern="[0-9]{6}" placeholder="Enter 6-digit PIN code" ngModel> 
+            <small></small>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid"  >Register</button>
+    </form>
+    </div>
+</body>
+</html>

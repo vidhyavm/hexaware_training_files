@@ -1,0 +1,185 @@
+<section  class="custom gradient-custom-2">
+  <form #RegFormData=ngForm  (ngSubmit)="readRegFormData(RegFormData)">
+    <div class="container py-5 h-100">
+      <div style="margin-top: 50px;" class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #5000bb;">General Infomation</h3>
+  
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Firstname" type="firstname" class="form-control form-control-lg" name="firstname"  required  #firstname="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="firstname.touched && firstname.invalid" > * Firstname is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Lastname" type="lastname" class="form-control form-control-lg" name="lastname"  required  #lastname="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="lastname.touched && lastname.invalid" > * Lastname is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <mat-form-field>
+                            <mat-label>Employer Type</mat-label>
+                            <select matNativeControl [formControl]="employerTypeControl" required>
+                              <option value="Salaried">Salaried</option>
+                              <option value="Optional">Others</option>
+                            </select>
+                          </mat-form-field>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Employer Name" type="employername" class="form-control form-control-lg" name="employername"  required  #employername="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="employername.touched && employername.invalid" > * Employer Name is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-7 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Pan Number" type="panno" class="form-control form-control-lg" name="panno"  required  #panno="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="panno.touched && panno.invalid" > * Pan Number is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <mat-form-field>
+                            <mat-label>Income</mat-label>
+                            <select matNativeControl [formControl]="userCategoryControl" required>
+                              <option value="A">Less Than 5LPA</option>
+                              <option value="B">Less Than 10LPA</option>
+                              <option value="C">Less Than 15LPA</option>
+                              <option value="D">Less Than 30LPA</option>
+                              <option value="E">More Than 30LPA</option>
+
+                            </select>
+                          </mat-form-field>
+                        </div>
+  
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-7 mb-4 pb-2">
+  
+                        <mat-form-field>
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" type="dob" class="form-control form-control-lg" name="dob"  required  #dob="ngModel"  ngModel>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+  
+                        </div> 
+
+                        <div class="col-md-5 mb-4 pb-2">
+  
+                          <div class="form-outline">
+                            <mat-form-field>
+                              <mat-label>User Type</mat-label>
+                              <select matNativeControl [formControl]="userTypeControl" required>
+                                <option value="User">User</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                    </div>
+  
+                  </div>
+                </div>
+                <div class="col-lg-6 bg-white text-grey">
+                  <div class="p-5">
+                    
+                    <h3 class="fw-normal mb-5" style="color: #5000bb;">Contact Details</h3>
+  
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input placeholder="Address Line" type="addressline" class="form-control form-control-lg" name="addressline"  required  #addressline="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="addressline.touched && addressline.invalid" > * Address Line is required</span>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Pin Code" type="pincode" class="form-control form-control-lg" name="pincode"  required  #pincode="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="pincode.touched && pincode.invalid" > * Pincode is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="State" type="state" class="form-control form-control-lg" name="state"  required  #state="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="state.touched && state.invalid" > * State is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="City" type="city" class="form-control form-control-lg" name="city"  required  #city="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="city.touched && city.invalid" > * City is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Mobile Number" type="mobile" class="form-control form-control-lg" name="mobile"  required  #mobile="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="mobile.touched && mobile.invalid" > * Mobile Number is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+  
+                    <div class="mb-4">
+                      <div class="form-outline">
+                        <input placeholder="Email Address" type="email" class="form-control form-control-lg" name="email"  required  #email="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="email.touched && email.invalid" > * Email Address is required</span>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="form-outline">
+                        <input placeholder="Password" type="password" class="form-control form-control-lg" name="password"  required  #password="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="password.touched && password.invalid" > * Password is required</span>
+                      </div>
+                    </div>
+  
+                    <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark" [disabled]="RegFormData.invalid">Register User</button>
+                    
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </section>

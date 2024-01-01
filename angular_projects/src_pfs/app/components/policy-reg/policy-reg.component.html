@@ -1,0 +1,103 @@
+  <section  class="h-120 h-custom gradient-custom-2">
+  <form #PolicyRegFormData=ngForm  (ngSubmit)="readPolicyRegFormData(PolicyRegFormData)">
+    <div class="container py-5 h-100">
+      <div style="margin-top: 50px;" class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #5000bb;">Policy Infomation</h3>
+  
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Policy Name" type="policyName" class="form-control form-control-lg" name="policyName"  required  #policyName="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="policyName.touched && policyName.invalid" > * Policy Name is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Company" type="company" class="form-control form-control-lg" name="company"  required  #company="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="company.touched && company.invalid" > * Comapny is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <mat-form-field>
+                            <mat-label>Policy Type</mat-label>
+                            <select matNativeControl [formControl]="policyTypeControl" required>
+                              <option value="Life Insurance">Life Insurance</option>
+                              <option value="Health Insurance">Health Insurance</option>
+                              <option value="Vehicle Insurance">Vehicle Insurance</option>
+                              <option value="Travel Insurance">Travel Insurance</option>
+                              <option value="Retirement Plan">Retirement Plan</option>
+                              <option value="Children's Plan">Children's Plan</option>
+                            </select>
+                          </mat-form-field>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+                        <div class="form-outline">
+                            <input placeholder="Interest Rate" type="interest" class="form-control form-control-lg" name="interest"  #interest="ngModel"  ngModel/>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input placeholder="Term Amount" type="amount" class="form-control form-control-lg" name="amount"  required  #amount="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="amount.touched && amount.invalid" > * Amount is required</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <mat-form-field>
+                              <mat-label>Term Period</mat-label>
+                              <select matNativeControl [formControl]="termPeriodControl" required>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quaterly">Quaterly</option>
+                                <option value="Half-Yearly">Half-Yearly</option>
+                                <option value="Annually">Annually</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+                <div class="col-lg-6 bg-white text-grey">
+                  <div class="p-5">  
+                    <div style="padding-top:50px" class="form-group">
+                        <label for="comment">Policy Description</label>
+                        <textarea placeholder="Max 500 Characters" class="form-control form-control-lg" rows="8" type="description" name="description" #description="ngModel" ngModel required></textarea>
+                        <span style="color:red"  *ngIf="description.touched && description.invalid" > * Description is required</span>
+
+                      </div>
+
+                    <div style="padding-top:20px;">
+                    <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark" [disabled]="PolicyRegFormData.invalid">Register Policy</button>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </section>

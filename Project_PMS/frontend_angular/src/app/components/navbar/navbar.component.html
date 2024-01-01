@@ -1,0 +1,24 @@
+<section class="gradient-custom">
+<nav class="navbar navbar-light bg-body-tertiary">
+  <div>
+      <a class="navbarbrand" ref="#">
+          <img src="https://i.ibb.co/GWf1x35/Logo-nobg2.png"
+              height="50"
+              loading="lazy"
+              routerLink=""
+          />
+      </a>
+  </div>
+  <div class="header">
+    <button  style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink='' >Home</button>
+    <button  style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" (click)="backClicked()" >Go Back</button>
+    <button *ngIf="UserloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/user-dashboard" >Dashboard</button>
+    <button *ngIf="AdminloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/admin-dashboard" >Dashboard</button>
+    <button *ngIf="!AdminloggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/policy-search" >Search Policies</button>
+    <button (click)="logoutUser()" *ngIf="loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15">Logout</button>
+    <button *ngIf="!loggedIn" style="background: #ae34ff; margin-right:50px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/login" >Login</button>
+    <button *ngIf="!loggedIn" style="background: #ae34ff; margin-right:75px; color: rgb(255, 255, 255);" class="btn btn-outline-body px-15" routerLink="/register-user" >Register</button>
+
+</div>
+</nav>
+</section>

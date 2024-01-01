@@ -1,0 +1,55 @@
+<h3>Give your details!</h3>
+<div class="container col-lg-12">
+<form  #myform="ngForm"  method="post"  class="container col-md-4" (ngSubmit)="addPlayers(myform.value)">
+            <div class="form-group">
+                <label for="playerName">Enter the Player Name:</label><br>
+                <input type="text" class="form-control" id="playerName"  name="playerName" placeholder="Enter a player name"  ngModel #playerName="ngModel" required > <br>
+                <div *ngIf="playerName.errors && (playerName.touched||myform.submitted)"> <br>
+                    <small class="text-danger" *ngIf="playerName.errors['required']" >playername cannot be empty></small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="jerserNo">Enter the Jersey Number:</label><br>
+                <input type="text" class="form-control" id="jerserNo"  name="jerserNo" placeholder="Enter a jerseyno" ngModel #jerserNo="ngModel" required > <br>
+                <div *ngIf="jerserNo.errors && (jerserNo.touched||myform.submitted)"> <br>
+                    <small class="text-danger" *ngIf="jerserNo.errors['required']" >jersey number cannot be empty></small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role">Enter the Role:</label><br>
+                <input type="text" class="form-control" id="role"  name="role" placeholder="Enter a role" ngModel #role="ngModel" required > <br>
+                <div *ngIf="role.errors && (role.touched||myform.submitted)"> <br>
+                    <small class="text-danger" *ngIf="role.errors['required']" >role cannot be empty></small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="totalMatches">Enter the Totalmatches:</label><br>
+                <input type="text" class="form-control" id="totalMatches"  name="totalMatches" placeholder="Enter a totalmatches" ngModel #totalMatches="ngModel" required > <br>
+                <div *ngIf="totalMatches.errors && (totalMatches.touched||myform.submitted)">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="teamName">Enter the Teamname:</label><br>
+                <input type="text" class="form-control" id="teamName"  name="teamName" placeholder="Enter a teamname" ngModel #teamName="ngModel" required > <br>
+                <div *ngIf="teamName.errors && (teamName.touched||myform.submitted)"><br>
+                    <small class="text-danger" *ngIf="teamName.errors['required']" >teamname cannot be empty></small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Enter the Country:</label><br>
+                <input type="text" class="form-control" id="country"  name="country" placeholder="Enter a country" ngModel #country="ngModel" required > <br>
+                <div *ngIf="country.errors && (country.touched||myform.submitted)"><br>
+                    <small class="text-danger" *ngIf="country.errors['required']" >country cannot be empty></small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Enter the Description:</label><br>
+                <input type="text" class="form-control" id="description"  name="description" placeholder="Enter a description" ngModel #description="ngModel" required > <br>
+                <div *ngIf="description.errors && (description.touched||myform.submitted)"><br>
+                    <small class="text-danger" *ngIf="description.errors['required']" >description cannot be empty></small>
+                </div>
+            </div>
+
+            <button type="submit"  class="btn btn-warning" [disabled]="myform.invalid" >Add</button>
+</form>
+</div>

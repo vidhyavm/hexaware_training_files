@@ -1,0 +1,142 @@
+
+<section  class="h-120 h-custom gradient-custom-2">
+    <form #PolRegFormData=ngForm  (ngSubmit)="readPolRegFormData(PolRegFormData)">
+      <div class="container py-5 h-100">
+        <div style="margin-top: 50px;" class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      <h3 class="fw-normal mb-5" style="color: #5000bb;">Policy Information</h3>
+    
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+    
+                          <div class="form-outline">
+                            <input placeholder="Policyname" type="Policyname" class="form-control form-control-lg" name="policyname"  required  #policyName="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="policyname.touched && policyname.invalid" > * PolicyName is required</span>
+                          </div>
+    
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+    
+                            <mat-form-field>
+                                <mat-label>Starting  Date of Policy</mat-label>
+                                  <input matInput [matDatepicker]="picker" type="startdate" class="form-control form-control-lg" name="startdate"  required  #startdate="ngModel"  ngModel/>
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+    
+                        </div>
+                      </div>
+  
+                      <div class="row">
+                        <div class="col-md-5 mb-4 pb-2">
+    
+                          <div class="form-outline">
+                            <mat-form-field>
+                              <mat-label>Policy Type</mat-label>
+                              <select matNativeControl [formControl]="policyTypeControl" required>
+                                <option value="LifeInsurencePolicy">Salaried</option>
+                                <option value="HealthInsurencePolicy">Others</option>
+                                <option value="TravelInsurencePolicy">Others</option>
+                                <option value="VehicleInsurencePolicy">Others</option>
+                                <option value="Children's Plan">Others</option>
+                                <option value="Retirement Plans">Others</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+    
+                        </div>
+                        <div class="col-md-7 mb-4 pb-2">
+    
+                            <mat-form-field>
+                                <mat-label>End Date of Policy</mat-label>
+                                <input  matInput [matDatepicker]="picker" type="enddate" class="form-control form-control-lg" name="enddate"  required  #enddate="ngModel"  ngModel/>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                             </mat-form-field>
+    
+                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-7 mb-4 pb-2">
+                          
+                          <div class="form-outline">
+                            <input placeholder="Company" type="company" class="form-control form-control-lg" name="company"  required  #company="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="company.touched && company.invalid" > * Company Name is required</span>
+                          </div>
+    
+                        </div>
+                        <div class="col-md-5 mb-4 pb-2">
+    
+                          <div class="form-outline">
+                            <mat-form-field>
+                              <mat-label>Tenure</mat-label>
+                              <select matNativeControl [formControl]="tenureControl" required>
+                                <option value="A">Till 2years</option>
+                                <option value="B">Till 5years</option>
+                                <option value="C">Till 7years</option>
+                                <option value="D">Till 10years</option>
+                                <option value="D">Till 15years</option>
+  
+                              </select>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                  <div class="col-lg-6 bg-white text-grey">
+                    <div class="p-5">
+                      
+                      <h3 class="fw-normal mb-5" style="color: #5000bb;">Payment Details</h3>
+    
+                      <div class="mb-4">
+    
+                        <div class="form-outline">
+                          <input placeholder="Payemnt Interval" type="paymentinterval" class="form-control form-control-lg" name="paymentinterval"  required  #payementinterval="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="paymentinterval.touched && paymentinterval.invalid" > *Payment Interval is required</span>
+                        </div>
+                      </div>
+    
+                      <div class="mb-4">
+    
+                          <div class="form-outline">
+                            <input placeholder="Amount" type="amount" class="form-control form-control-lg" name="amount"  required  #amount="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="amount.touched && amount.invalid" > * Amount is required</span>
+                          </div>
+                        </div>
+    
+                        <div class="mb-4">
+    
+                          <div class="form-outline">
+                            <input placeholder="Maturity Amount" type="maturityamount" class="form-control form-control-lg" name="maturityamount"  required  #maturityamount="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="maturityamount.touched && maturityamount.invalid" > * maturityamount is required</span>
+                          </div>
+                        </div>
+                    
+                    <div class="mb-4">
+    
+                          <div class="form-outline">
+                            <input placeholder="Interest" type="interest" class="form-control form-control-lg" name="interest"  required  #interest="ngModel"  ngModel/>
+                            <span style="color:red"  *ngIf="city.touched && city.invalid" > * City is required</span>
+                          </div>
+    
+                        </div>
+                    </div>
+                </div>
+    
+                      <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
+                        data-mdb-ripple-color="dark" [disabled]="PolRegFormData.invalid">Register Policy</button>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+</section>

@@ -1,0 +1,33 @@
+<h3>Players List</h3>
+<button  type="button" class="btn btn-warning"  (click)="getAllPlayers()" >Display All Players</button>
+
+<div class="container">
+<table class="table table-primary col-sm-5">
+
+   <tr><th>SNO.</th>
+    <th>playerId</th>
+    <th>playerName</th>
+    <th>jerseyNumber</th>
+    <th>role</th>
+    <th>totalMatches</th>
+    <th>teamName</th>
+    <th>country</th>
+    <th>description</th>
+
+</tr> 
+<tr *ngFor="let player of playerList; index as i">
+    <td>{{i+1}}</td>
+     <td>{{player.playerId}}</td>
+     <td>{{player.playerName}}</td>
+     <td>{{player.jerserNo}}</td> 
+     <td>{{player.role}}</td>  
+     <td>{{player.totalMatches}}</td> 
+     <td>{{player.teamName}}</td>  
+     <td>{{player.country}}</td> 
+     <td>{{player.description}}</td> 
+
+     <td><button type="button" class="btn btn-danger"  (click)="deleteByJerserNo(player.playerName,player.jerserNo)" >Delete</button></td>
+
+</tr>
+
+</table>

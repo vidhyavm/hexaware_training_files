@@ -1,0 +1,237 @@
+<section class = "search-bg">
+    <div *ngIf="isAdminLoggedIn()" style="text-align: center; padding-top: 15px;">
+        <h3 style="color: white;">Manage Policies</h3>
+    </div>
+    
+    <h3 *ngIf="(!isUserLoggedIn() && !isAdminLoggedIn())" style="color: white; padding-top: 15px; text-align: center;"> Log in to Buy Now!</h3>
+    
+     <div class="container">
+        <select style="margin-top: 15px;" class="custom-select">
+            <option selected>Sort By</option>
+            <option value="1">Low to High</option>
+            <option value="2">High to Low</option>
+          </select>
+          <select (change)="getPoliciesByType($event)" style="margin-top: 15px; margin-bottom: 15px;" class="custom-select">
+            <option selected>Policy Type</option>
+            <option value="Get All">Get All</option>
+            <option value="Life Insurance">Life Insurance</option>
+            <option value="Health Insurance">Health Insurance</option>
+            <option value="Vehicle Insurance">Vehicle Insurance</option>
+            <option value="Travel Insurance">Travel Insurance</option>
+            <option value="Children's Plan">Children's Plan</option>
+            <option value="Retirement Plan">Retirement Plan</option>
+          </select>
+     </div>
+
+
+<div class = "search-table">
+<table class = "table table-borderes">
+    <thead class = "thead">
+        <tr>
+            <th>Policy Id</th>
+            <th>Policy Name</th>
+            <th>Type</th>
+            <th>Company</th>
+            <th>Term Period</th>
+            <th>Term Amount</th>
+            <th>Interest</th>
+            <th>Maturity Amount</th>
+            <th>Description</th>
+            <th *ngIf="isUserLoggedIn()">Buy Now</th>
+            <th *ngIf="isAdminLoggedIn()">Edit</th>
+            <th *ngIf="isAdminLoggedIn()">Delete</th>
+
+
+        </tr>
+    </thead>
+    <tbody class = "tbody">
+        <tr *ngFor="let policy of policyDetails">
+            <td>{{policy.policyId}}</td>
+            <td>{{policy.policyName}}</td>
+            <td>{{policy.policyType}}</td>
+            <td>{{policy.company}}</td>
+            <td>{{policy.termPeriod}}</td>
+            <td>{{policy.amount}}</td>
+            <td>{{policy.interest}}</td>
+            <td>{{policy.maturityAmount}}</td>
+            <td>{{policy.policyDescription}}</td>
+            <td *ngIf="isUserLoggedIn()"><button class="btn button">Buy Now</button></td>
+            <td *ngIf="isAdminLoggedIn()"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+            <td *ngIf="isAdminLoggedIn()" (click)="deletePolicy(policy.policyId)"><button class="btn btn-danger">Delete</button></td>
+
+        </tr>
+    </tbody>
+
+</table>
+
+
+</div>
+
+
+<form *ngIf="isAdminLoggedIn()" #PolicyRegFormData=ngForm  (ngSubmit)="readPolicyRegFormData(PolicyRegFormData)">
+    <div style="margin-left: 25px; margin-right: 25px;" class="py-5 h-100 ">
+      <div style="margin-top: 20px;" class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #5000bb;">Policy Registration</h3>
+  
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Policy Name" type="policyName" class="form-control form-control-lg" name="policyName"  required  #policyName="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="policyName.touched && policyName.invalid" > * Policy Name is required</span>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <input placeholder="Company" type="company" class="form-control form-control-lg" name="company"  required  #company="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="company.touched && company.invalid" > * Comapny is required</span>
+                        </div>
+  
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5 mb-4 pb-2">
+  
+                        <div class="form-outline">
+                          <mat-form-field>
+                            <mat-label>Policy Type</mat-label>
+                            <select matNativeControl [formControl]="policyTypeControl" required>
+                              <option value="Life Insurance">Life Insurance</option>
+                              <option value="Health Insurance">Health Insurance</option>
+                              <option value="Vehicle Insurance">Vehicle Insurance</option>
+                              <option value="Travel Insurance">Travel Insurance</option>
+                              <option value="Retirement Plan">Retirement Plan</option>
+                              <option value="Children's Plan">Children's Plan</option>
+                            </select>
+                          </mat-form-field>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-7 mb-4 pb-2">
+                        <div class="form-outline">
+                            <input placeholder="Interest Rate" type="interest" class="form-control form-control-lg" name="interest"  #interest="ngModel"  ngModel/>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input placeholder="Term Amount" type="amount" class="form-control form-control-lg" name="amount"  required  #amount="ngModel"  ngModel/>
+                          <span style="color:red"  *ngIf="amount.touched && amount.invalid" > * Amount is required</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <mat-form-field>
+                              <mat-label>Term Period</mat-label>
+                              <select matNativeControl [formControl]="termPeriodControl" required>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quaterly">Quaterly</option>
+                                <option value="Half-Yearly">Half-Yearly</option>
+                                <option value="Annually">Annually</option>
+                              </select>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+                <div class="col-lg-5 bg-white text-grey">
+                  <div style="margin-left:45px;" >  
+                    <div style="padding-top:50px" class="form-group">
+                        <label for="comment">Policy Description</label>
+                        <textarea placeholder="Max 500 Characters" class="form-control form-control-lg" rows="8" type="description" name="description" #description="ngModel" ngModel required></textarea>
+                        <span style="color:red"  *ngIf="description.touched && description.invalid" > * Description is required</span>
+
+                      </div>
+
+                    <div style="padding-top:20px;">
+                    <button style="background: #5000bb; color: rgb(255, 255, 255);" type="submit" class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark" [disabled]="PolicyRegFormData.invalid">Register Policy</button>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Policy</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #formData=ngForm (ngSubmit)="updateFormData(formData)">
+                <div class="form-group">
+                    <label>Policy Id</label>
+                    <input class="form-control" placeholder="Policy Id" type="policyId" name="policyId" #policyId="ngModel" ngModel>
+                  </div>
+                <div class="form-group">
+                  <label>Policy Name</label>
+                  <input class="form-control" placeholder="Policy Name" type="policyName" name="policyName" #policyName="ngModel" ngModel>
+                </div>
+                <div class="form-group">
+                  <label>Company</label>
+                  <input class="form-control" placeholder="Company" type="company" name="company" #company="ngModel" ngModel>
+                </div>
+                <div class="form-group">
+                    <label>Term Amount</label>
+                    <input placeholder="Term Amount" type="amount" class="form-control" name="amount"    #amount="ngModel"  ngModel/>
+                </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Interest Rate</label>
+                    <input placeholder="Interest Rate" type="interest" class="form-control" name="interest"    #interest="ngModel"  ngModel/>
+                </div>
+                  <mat-form-field>
+                    <mat-label>Term Period</mat-label>
+                    <select matNativeControl [formControl]="termPeriodControl" >
+                      <option value="Monthly">Monthly</option>
+                      <option value="Quaterly">Quaterly</option>
+                      <option value="Half-Yearly">Half-Yearly</option>
+                      <option value="Annually">Annually</option>
+                    </select>
+                  </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Policy Type</mat-label>
+                        <select matNativeControl [formControl]="policyTypeControl" >
+                          <option value="Life Insurance">Life Insurance</option>
+                          <option value="Health Insurance">Health Insurance</option>
+                          <option value="Vehicle Insurance">Vehicle Insurance</option>
+                          <option value="Travel Insurance">Travel Insurance</option>
+                          <option value="Retirement Plan">Retirement Plan</option>
+                          <option value="Children's Plan">Children's Plan</option>
+                        </select>
+                      </mat-form-field>
+                      
+                      <textarea placeholder="Max 500 Characters" class="form-control" rows="8" type="description" name="description" #description="ngModel" ngModel required></textarea>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+
+      </div>
+    </div>
+  </div>
